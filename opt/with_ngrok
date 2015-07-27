@@ -6,7 +6,7 @@ if [ -z "$NGROK_API_TOKEN" ]; then
   NGROK_OPTS="${NGROK_OPTS} -authtoken ${NGROK_API_TOKEN}"
 fi
 
-# Start the TCP tunnel
+# Start the tunnel
 ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${aux_port}"
 echo "Starting ngrok with command `${ngrok_cmd}`"
 eval "$ngrok_cmd &"
