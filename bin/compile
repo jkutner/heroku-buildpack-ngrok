@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# fail fast
+set -eu
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+# parse args
+export BUILD_DIR=$1
+
+BP_DIR="$(cd "$(dirname "$0")" && pwd)"
+OPT_DIR=$BP_DIR/../opt/
+
+echo -n "-----> Installing ngrok... "
+mkdir -p $BUILD_DIR/.heroku/bin
+curl --silent --retry 3 -o ngrok.zip -L "https://dl.ngrok.com/ngrok_2.0.19_linux_amd64.zip" | indent
+unzip ngrok.zip -d $BUILD_DIR/.heroku/bin > /dev/null 2>&1
+echo "done"

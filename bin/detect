@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "JDWP"
+exit 0
