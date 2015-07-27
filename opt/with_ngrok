@@ -8,7 +8,7 @@ fi
 
 # Start the TCP tunnel
 ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${aux_port}"
-echo "Starting ngrok..."
+echo "Starting ngrok with command `${ngrok_cmd}`"
 eval "$ngrok_cmd &"
 ngrok_pid=$!
 
