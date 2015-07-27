@@ -1,8 +1,8 @@
 # Heroku ngrok Buildpack
 
 This is a [Heroku Buildpack](https://devcenter.heroku.com/articles/buildpacks)
-for running a auxiliary port on a Java process in [dyno](https://devcenter.heroku.com/articles/dynos).
-The auxiliary port will be proxied by [ngrok](https://ngrok.com/), which makes it accessible from a remote machine.
+for running a auxiliary port on a process in [dyno](https://devcenter.heroku.com/articles/dynos).
+The auxiliary port will be proxied by [ngrok](https://ngrok.com/), which makes it accessible from a remote machine. By default, the port is 9090, but it can be configured with the `$AUX_PORT` config variable.
 
 ## Setup
 
@@ -56,6 +56,12 @@ $ open http://ngrok.com:39678
 ```
 
 ## Customizing
+
+You can customize the aux port like so:
+
+```
+$ heroku config:set AUX_PORT=5001
+```
 
 You can customize the execution of ngrok by setting the `NGROK_OPTS` config var like so:
 
