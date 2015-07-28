@@ -3,7 +3,7 @@
 aux_port=${AUX_PORT:-9090}
 
 if [ -z "$NGROK_API_TOKEN" ]; then
-  NGROK_OPTS="${NGROK_OPTS} -authtoken ${NGROK_API_TOKEN}"
+  NGROK_OPTS="${NGROK_OPTS} --authtoken ${NGROK_API_TOKEN}"
 fi
 
 # Start the tunnel
