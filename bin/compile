@@ -12,10 +12,11 @@ export BUILD_DIR=$1
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 OPT_DIR=$BP_DIR/../opt/
+NGROK_DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
 
 echo -n "-----> Installing ngrok... "
 mkdir -p $BUILD_DIR/.heroku/bin
-curl --silent --retry 3 -o ngrok.zip -L "https://dl.ngrok.com/ngrok_2.0.19_linux_amd64.zip" | indent
+curl --silent --retry 3 -o ngrok.zip -L $NGROK_DOWNLOAD_URL | indent
 unzip ngrok.zip -d $BUILD_DIR/.heroku/bin > /dev/null 2>&1
 chmod +x $BUILD_DIR/.heroku/bin/ngrok
 
