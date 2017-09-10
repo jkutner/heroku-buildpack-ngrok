@@ -5,8 +5,4 @@ if [ -z ${NGROK_PID+x} ]; then
     exit 1
 fi
 
-ngrok_client_base_url = ${NGROK_CLIENT_BASE_URL:-"http://localhost:4040/api"}
-result = $(curl "$ngrok_client_base_url/tunnels")
-
-echo "$result"
-exit 0
+echo $(curl "http://localhost:4040/api/tunnels")
