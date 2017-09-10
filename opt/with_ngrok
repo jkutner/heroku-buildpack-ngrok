@@ -8,9 +8,9 @@ fi
 
 # Start the tunnel
 if [ -f $PWD/ngrok.yml ]; then
-    ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${port}"
-else
     ngrok_cmd=".heroku/bin/ngrok start -config $PWD/ngrok.yml main ${NGROK_OPTS}"
+else
+    ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${port}"
 fi
 
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
