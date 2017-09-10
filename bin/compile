@@ -20,8 +20,8 @@ curl --silent --retry 3 -o ngrok.zip -L $NGROK_DOWNLOAD_URL | indent
 unzip ngrok.zip -d $BUILD_DIR/.heroku/bin > /dev/null 2>&1
 chmod +x $BUILD_DIR/.heroku/bin/ngrok
 
-cp $OPT_DIR/with_ngrok $BUILD_DIR/.heroku/bin/with_ngrok
-chmod +x $BUILD_DIR/.heroku/bin/with_ngrok
+cp -r $OPT_DIR/* $BUILD_DIR/.heroku/bin/
+chmod +x $BUILD_DIR/.heroku/bin/*
 echo " done"
 
 mkdir -p $BUILD_DIR/.profile.d

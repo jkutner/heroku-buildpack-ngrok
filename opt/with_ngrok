@@ -17,4 +17,6 @@ echo "Starting ngrok with command \`${ngrok_cmd}\`"
 eval "$ngrok_cmd &"
 ngrok_pid=$!
 
+export NGROK_PID=$ngrok_pid
+
 eval "$@"

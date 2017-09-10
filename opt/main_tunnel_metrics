@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ -z ${NGROK_PID+x} ]; then
+    echo "ngrok not runnning"
+    exit 1
+fi
+
+ngrok_client_base_url = ${NGROK_CLIENT_BASE_URL:-"http://localhost:4040/api"}
+result = $(curl "$ngrok_client_base_url/tunnels/main")
+
+echo "$result"
+exit 0
