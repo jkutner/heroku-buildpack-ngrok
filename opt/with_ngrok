@@ -14,9 +14,10 @@ else
 fi
 
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
-eval "$ngrok_cmd &"
+eval "$ngrok_cmd >/dev/null 2>&1 &"
 ngrok_pid=$!
 
 export NGROK_PID=$ngrok_pid
 
 eval "$@"
+exit $?
