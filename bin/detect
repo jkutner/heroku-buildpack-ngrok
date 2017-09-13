@@ -1,4 +1,11 @@
 #!/bin/sh
 
 echo "ngrok"
+
+export BUILD_DIR=$1
+
+if [ -f $BUILD_DIR/ngrok.yml ]; then
+    echo "ngrok.yml detected"
+fi
+
 exit 0

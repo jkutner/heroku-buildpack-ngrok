@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -z ${NGROK_PID+x} ]; then
+    echo "ngrok not runnning"
+    exit 1
+fi
+
+echo $(curl "http://localhost:4040/api/tunnels")

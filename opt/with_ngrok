@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
-aux_port=${AUX_PORT:-9090}
+port=${PORT:-9090}
 
 if [ -n "$NGROK_API_TOKEN" ]; then
   NGROK_OPTS="${NGROK_OPTS} --authtoken ${NGROK_API_TOKEN}"
 fi
 
 # Start the tunnel
-ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${aux_port}"
+if [ -f $PWD/ngrok.yml ]; then
+    ngrok_cmd="ngrok start -config $PWD/ngrok.yml --all"
+else
+    ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${port}"
+fi
+
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
-eval "$ngrok_cmd &"
+eval "$ngrok_cmd >/dev/null 2>&1 &"
 ngrok_pid=$!
 
+export NGROK_PID=$ngrok_pid
+
 eval "$@"
+exit $?
