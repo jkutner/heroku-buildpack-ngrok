@@ -15,13 +15,13 @@ $ heroku config:set NGROK_API_TOKEN=xxxxxx
 Next, add this buildpack to your app:
 
 ```
-$ heroku buildpacks:add https://github.com/jkutner/heroku-buildpack-ngrok.git
+$ heroku buildpacks:add jkutner/ngrok
 ```
 
 Then add your primary buildpack. For example, if you are using Java:
 
 ```
-$ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-java.git
+$ heroku buildpacks:add heroku/java
 ```
 
 Now modify your `Procfile` by prefixing your `web` process with the `with_ngrok` command. For example:
