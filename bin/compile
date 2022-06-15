@@ -8,7 +8,7 @@ indent() {
 }
 
 # parse args
-export BUILD_DIR=$1
+export BUILD_DIR=$
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 OPT_DIR=$BP_DIR/../opt/
